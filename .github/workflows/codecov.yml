@@ -25,3 +25,11 @@ jobs:
     - uses: codecov/codecov-action@v3
       with:
         files: python-lcov.info,lcov.info
+    - uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: python-lcov.info
+    - uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: lcov.info
