@@ -12,7 +12,9 @@ def romanize(v: int) -> str:
             return 'five'
         case 6:
             return 'six'
+        case 7:
+            return 'seven'
         case _:
-            raise ValueError('only 1 to 6 is allowed')
+            raise ValueError('only 1 to 7 is allowed')
 
 

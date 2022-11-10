@@ -6,7 +6,8 @@ fn romanize(v: i32) -> &'static str {
         4 => &"four",
         5 => &"five",
         6 => &"six",
-        _ => panic!("only 1 to 6 is allowed."),
+        7 => &"seven",
+        _ => panic!("only 1 to 7 is allowed."),
     }
 }
 
