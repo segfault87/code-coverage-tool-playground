@@ -1,0 +1,29 @@
+name: Codecov
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Measure Code Coverage
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Install
+      run: pip install -r python/requirements.txt
+    - name: Run pytest
+      run: pytest --cov python --cov-report=xml:python.xml python/tests
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - uses: actions-rs/cargo@v1
+      with:
+        command: install
+        args: cargo-tarpaulin
+    - name: Run tarpaulin (Rust unit test)
+      run: cargo tarpaulin --root rust -o xml
+    - uses: codecov/codecov-action@v3
+      with:
+        files: python.xml,cobertura.xml
