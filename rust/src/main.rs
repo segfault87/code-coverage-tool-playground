@@ -21,6 +21,7 @@ mod tests {
     #[test]
     fn test_romanize() {
         assert_eq!(romanize(1), "one");
+        assert_eq!(romanize(2), "two");
         assert_ne!(romanize(3), "two");
     }
 }
