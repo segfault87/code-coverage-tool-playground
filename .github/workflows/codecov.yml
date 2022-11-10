@@ -18,12 +18,10 @@ jobs:
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-    - uses: actions-rs/cargo@v1
+    - uses: actions-rs/tarpaulin@master
       with:
-        command: install
-        args: cargo-tarpaulin
-    - name: Run tarpaulin (Rust unit test)
-      run: cargo tarpaulin --root rust -o lcov
+        version: '0.22.0'
+        args: '--root rust -o lcov'
     - uses: codecov/codecov-action@v3
       with:
         files: python-lcov.info,lcov.info
