@@ -25,11 +25,10 @@ jobs:
     - uses: codecov/codecov-action@v3
       with:
         files: python-lcov.info,lcov.info
+    - name: Merge coverage files
+      run: |
+        cat python-lcov.info lcov.info > merged-lcov.info
     - uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: python-lcov.info
-    - uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: lcov.info
+        path-to-lcov: merged-lcov.info
