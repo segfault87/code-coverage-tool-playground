@@ -14,7 +14,7 @@ jobs:
     - name: Install
       run: pip install -r python/requirements.txt
     - name: Run pytest
-      run: pytest --cov python --cov-report=xml:python.xml python/tests
+      run: pytest --cov python --cov-report=lcov:python-lcov.info python/tests
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
@@ -23,7 +23,7 @@ jobs:
         command: install
         args: cargo-tarpaulin
     - name: Run tarpaulin (Rust unit test)
-      run: cargo tarpaulin --root rust -o xml
+      run: cargo tarpaulin --root rust -o lcov
     - uses: codecov/codecov-action@v3
       with:
-        files: python.xml,cobertura.xml
+        files: python-lcov.info,lcov.info
