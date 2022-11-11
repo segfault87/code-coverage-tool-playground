@@ -23,5 +23,6 @@ mod tests {
         assert_eq!(romanize(1), "one");
         assert_eq!(romanize(2), "two");
         assert_ne!(romanize(3), "two");
+        assert_eq!(romanize(4), "four");
     }
 }
